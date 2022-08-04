@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const { sequelize } = require("./db/models");
 const routes = require("./routes");
-const { Content, ContentResolution } = require("./db/relations");
+const { User } = require("./db/relations");
 const morgan = require("morgan");
 const { ValidationError } = require("joi");
 
@@ -40,9 +40,13 @@ app.use((err, req, res, next) => {
 
 // database connection check
 sequelize
-  .sync({ alter: false })
+  .sync({ alter: false, force: false })
   .then(() => {
     console.log("👍 DataBase Connection has been established successfully.");
+    // just for testing purpose
+    User.findAll().then((users) => {
+      console.log(users);
+    });
   })
   .catch((error) => {
     console.log(error);
