@@ -5,7 +5,8 @@ module.exports = function (sequelize, DataTypes) {
       promoCode: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+
+        primaryKey: true,
       },
       isUnlimitedSingleEvent: {
         type: DataTypes.BOOLEAN,

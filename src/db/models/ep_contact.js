@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
-    "Contect",
+    "Contact",
     {
       contactId: {
         type: DataTypes.UUID,

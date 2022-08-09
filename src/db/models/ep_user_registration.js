@@ -1,20 +1,20 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
-    "EventInvitation",
+    "Registration",
     {
-      eventInvitationId: {
+      registrationId: {
         type: DataTypes.UUID,
-        allowNull: false,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
-      },
-      endDate: {
-        type: DataTypes.DATE,
         allowNull: false,
       },
-      isDraft: {
-        type: DataTypes.BOOLEAN,
+      registrationType: {
+        type: DataTypes.ENUM("MANUAL", "GOOGLE", "APPLE"),
         allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     {

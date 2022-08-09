@@ -1,14 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
-    "ContactList",
+    "UserContact",
     {
       isFavorite: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false,
       },
     },
     {
+      tableName: "UserContact",
       timestamps: true,
     }
   );
