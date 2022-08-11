@@ -46,7 +46,9 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getUserById = async (req, res) => {
     try {
-        const user = await User.findAll()
+        const userId = req.params.id
+        const user = await User.findByPk(userId, { raw: true })
+
         return res.json({
             success: true,
             result: { user },
