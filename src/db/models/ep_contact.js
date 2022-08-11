@@ -10,29 +10,22 @@ module.exports = function (sequelize, DataTypes) {
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       link: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       firstName: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      phoneNumber: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      dialingCode: {
         type: DataTypes.STRING,
         allowNull: false,
       },
