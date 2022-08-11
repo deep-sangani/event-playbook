@@ -1,11 +1,13 @@
+const Sequelize = require("sequelize");
+
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define(
+  const ep_user = sequelize.define(
     "User",
     {
       userId: {
         type: DataTypes.UUID,
         primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
       },
       displayName: {
@@ -20,9 +22,30 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      registrationId: {
+        type: DataTypes.UUID,
+        reference: {
+          model: "Registration",
+          key: "registrationId",
+        },
+      },
+      contactId: {
+        type: DataTypes.UUID,
+        reference: {
+          model: "Contact",
+          key: "contactId",
+        },
+      },
     },
     {
       timestamps: true,
     }
   );
+
+  ep_user.associate = (models) => {
+    ep_user.hasOne(models.Registration);
+    ep_user.hasOne(models.Contact);
+  };
+
+  return ep_user;
 };

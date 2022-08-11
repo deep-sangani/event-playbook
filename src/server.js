@@ -2,8 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const { sequelize } = require("./db/models");
-const routes = require("./routes");
-const { User } = require("./db/relations");
+const routes = require("./routes/routes");
 const morgan = require("morgan");
 const { ValidationError } = require("joi");
 
@@ -40,17 +39,14 @@ app.use((err, req, res, next) => {
 
 // database connection check
 sequelize
-  .sync({ alter: false, force: false })
+  .sync({ alter: false, force: true })
   .then(() => {
-    console.log("👍 DataBase Connection has been established successfully.");
+    console.log("DataBase Connection has been established successfully.");
     // just for testing purpose
-    User.findAll().then((users) => {
-      console.log(users);
-    });
   })
   .catch((error) => {
     console.log(error);
-    console.error("❗️unable to connec to the database", error.message);
+    console.error("unable to connect to the database", error.message);
   });
 
 // server connection
