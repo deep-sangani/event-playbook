@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
-    "RsvpQuestion",
+    "RsvpResponse",
     {
       rsvpResId: {
         type: DataTypes.UUID,

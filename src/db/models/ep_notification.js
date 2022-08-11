@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
-    "Location",
+    "Notification",
     {
       notificationId: {
         type: DataTypes.UUID,

@@ -12,10 +12,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      promoCode: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+
       previousCredits: {
         type: DataTypes.INTEGER,
         allowNull: false,
